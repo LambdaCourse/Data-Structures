@@ -12,12 +12,12 @@ class LinkedList:
         self.size = 0
 
 
-    def iter(self):
-        current = self.tail
-        while current:
-            val = current.value
-            current = current.next
-            yield val
+##    def iter(self):
+##        current = self.tail
+##        while current:
+##            val = current.value
+##            current = current.next
+##            yield val
 
     def __str__(self):
         return str(value)
@@ -34,12 +34,12 @@ class LinkedList:
             
             self.tail = new_tail
         self.size += 1
-
-    def contains(self, value):
-        for node in self.iter():
-            if value == node:
-                return True
-        return False
+##
+##    def contains(self, value):
+##        for node in self.iter():
+##            if value == node:
+##                return True
+##        return False
 
     def remove_head(self):
         if self.head is None:
@@ -55,7 +55,7 @@ class LinkedList:
             current = self.head
             self.head = current.next
             self.size -= 1
-            return curren.value
+            return current.value
                 
         
 
