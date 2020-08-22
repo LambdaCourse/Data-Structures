@@ -7,55 +7,63 @@ class Node:
         
 class LinkedList:
     def __init__(self):
-        self.head = None
-        self.tail = None
+        self.head: Node = None
+        self.tail: Node = None
         self.size = 0
 
 
-    def iter(self):
-        current = self.tail
-        while current:
-            val = current.value
-            current = current.next
-            yield val
-
     def __str__(self):
         return str(value)
+
+    def add_to_head(self, value):
+        new_node = Node(value)
+
+        #check if empty list
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            # new node should point to current head
+            new_node.next = self.head
+            self.head = new_node
+            self.size += 1
+            
     
     def add_to_tail(self, value):
-        if self.tail is None:
-            new_tail = Node(value, None)
-            self.head = new_tail
-            self.tail = new_tail
+        new_node = Node(value)
+
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
         else:
-            new_tail = Node(value, None)
-            old_tail = self.tail
-            old_tail.next = new_tail
+            self.tail.next = new_node
+            self.tail = new_node
+            self.size += 1
             
-            self.tail = new_tail
-        self.size += 1
 
     def contains(self, value):
-        for node in self.iter():
-            if value == node:
-                return True
-        return False
+       pass
 
     def remove_head(self):
         if self.head is None:
             return None
+        
         if self.head == self.tail:
-            
-            current = self.head
+            current_head = self.head
             self.head = None
             self.tail = None
+            self.size += 1
+            return current_head.value
+
+    def remove_tail(self):
+        if self.tail is None:
+            return
+        if self.head == self.tail:
+            current_tail = self.tail
+            self.tail = None
+            self.head = None
             self.size -= 1
-            return current.value
-        else:
-            current = self.head
-            self.head = current.next
-            self.size -= 1
-            return current.value
+            return current_tail.value
                 
         
 
